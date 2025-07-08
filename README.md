@@ -93,3 +93,8 @@ asyncio.run(main())
 ```shell
 openssl x509 -in server.crt -out server.pem -outform PEM
 ```
+---
+### Check SAN
+```shell
+openssl x509 -in server.crt -text -noout | grep -A 1 "Subject Alternative Name"
+```
