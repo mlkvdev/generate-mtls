@@ -5,12 +5,6 @@
 - Nginx configuration
 - `aiohttp` client request with mTLS
 ### ✳ STEP 1: Create a private Certificate Authority (CA)
-```shell
-openssl genrsa -out ca.key 4096
-openssl req -x509 -new -key ca.key -sha256 -days 3650 -out ca.crt
-```
-
-### ✳ STEP 2: Generate Server Certificate (for domain like deepen.uz)
 **Create `openssl.cnf` file:**
 
 ```text
@@ -38,6 +32,12 @@ DNS.2 = sub.example.com
 IP.1  = 75.22.11.99
 ```
 ---
+```shell
+openssl genrsa -out ca.key 4096
+openssl req -x509 -new -key ca.key -sha256 -days 3650 -out ca.crt -config openssl.cnf
+```
+
+### ✳ STEP 2: Generate Server Certificate (for domain like deepen.uz)
 **Generate key and CSR:**
 ```shell
 openssl genrsa -out server.key 2048
