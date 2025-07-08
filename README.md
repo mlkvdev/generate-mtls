@@ -88,3 +88,8 @@ async def main():
     
 asyncio.run(main())
 ```
+---
+### Convert .crt to .pem
+```shell
+openssl x509 -in server.crt -out server.pem -outform PEM
+```
