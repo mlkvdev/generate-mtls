@@ -47,7 +47,7 @@ openssl req -new -key server.key -out server.csr
 **Sign the server certificate:**
 ```shell
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
--out server.crt -days 3650 -sha256 -extfile openssl.cnf
+-out server.crt -days 3650 -sha256 -extensions req_ext -extfile openssl.cnf
 ```
 ### ✳ STEP 3: Generate Client Certificate
 ```shell
