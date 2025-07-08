@@ -1,4 +1,4 @@
-# Goal:
+## Steps:
 - Create a private Certificate Authority (CA)
 - Generate a server certificate valid for an IP address
 - Generate a server certificate valid for an IP address
