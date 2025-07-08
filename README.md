@@ -4,13 +4,13 @@
 - Generate a server certificate valid for an IP address
 - Nginx configuration
 - `aiohttp` client request with mTLS
-### STEP 1: Create a private Certificate Authority (CA)
+### ✳ STEP 1: Create a private Certificate Authority (CA)
 ```shell
 openssl genrsa -out ca.key 4096
 openssl req -x509 -new -key ca.key -sha256 -days 3650 -out ca.crt
 ```
 
-### STEP 2: Generate Server Certificate (for domain like deepen.uz)
+### ✳ STEP 2: Generate Server Certificate (for domain like deepen.uz)
 **Create `openssl.cnf` file:**
 
 ```text
@@ -49,14 +49,14 @@ openssl req -new -key server.key -out server.csr
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 -out server.crt -days 3650 -sha256 -extfile server.ext
 ```
-### STEP 3: Generate Client Certificate
+### ✳ STEP 3: Generate Client Certificate
 ```shell
 openssl genrsa -out client.key 2048
 openssl req -new -key client.key -out client.csr
 openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 -out client.crt -days 3650 -sha256
 ```
-### Nginx configuration
+### ✳ Nginx configuration
 ```
 server {
  listen 443 ssl;
@@ -70,7 +70,7 @@ server {
  }
 }
 ```
-### `aiohttp` client request with mTLS
+### ✳ `aiohttp` client request with mTLS
 ```python
 import ssl
 import aiohttp
