@@ -41,7 +41,7 @@ openssl req -x509 -new -key ca.key -sha256 -days 3650 -out ca.crt -config openss
 **Generate key and CSR:**
 ```shell
 openssl genrsa -out server.key 2048
-openssl req -new -key server.key -out server.csr
+openssl req -new -key server.key -out server.csr -config openssl.cnf
 ```
 ---
 **Sign the server certificate:**
